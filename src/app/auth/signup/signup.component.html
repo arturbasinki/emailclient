@@ -1,1 +1,7 @@
-<p>signup works!</p>
+<h3>Create an Account</h3>
+
+<form [formGroup]="authForm">
+  <input formControlName="username" type="text" />
+  <input formControlName="password" type="text" />
+  <input formControlName="passwordConfirmation" type="text" />
+</form>
