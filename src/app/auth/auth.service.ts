@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, pipe, tap } from 'rxjs';
 
 interface UsernameAvailableResponse {
   avilable: boolean;
@@ -60,5 +60,13 @@ export class AuthService {
           this.signedin$.next(authenticated);
         })
       );
+  }
+
+  signout() {
+    return this.http.post<boolean>(`${this.rootUrl}/auth/signout`, {}).pipe(
+      tap(() => {
+        this.signedin$.next(false);
+      })
+    );
   }
 }
