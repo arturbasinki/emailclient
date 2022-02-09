@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EmailResolverService } from './email-resolver.service';
 import { EmailShowComponent } from './email-show/email-show.component';
 import { HomeComponent } from './home/home.component';
 import { PlaceholderComponent } from './placeholder/placeholder.component';
@@ -16,6 +17,9 @@ const routes: Routes = [
       {
         path: ':id',
         component: EmailShowComponent,
+        resolve: {
+          email: EmailResolverService,
+        },
       },
     ],
   },
